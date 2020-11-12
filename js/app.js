@@ -1,6 +1,6 @@
 let employees = [];
 const urlAPI =  `https://randomuser.me/api/?results=12&inc=name, picture,
-email, location, phone, dob &noinfo &nat=US`
+email, location, phone, dob, cell &noinfo &nat=US`
 const gridContainer = document.querySelector(".grid-container");
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
@@ -9,8 +9,8 @@ const modalClose = document.querySelector(".modal-close");
 /// fetch data from API ///
 
 fetch(urlAPI)
-    .then(res => res.json())
-    .then(res => res.results)
+    .then(response => response.json())
+    .then(response => response.results)
     .then(displayEmployees)
     .catch(err => console.log(err))
 
@@ -29,6 +29,9 @@ function displayEmployees(employeeData) {
         let email = employee.email;
         let city = employee.location.city;
         let picture = employee.picture;
+        let cell = employee.cell;
+        
+        
 
         employeeHTML += `
         <div class="card" data-index="${index}">
@@ -36,7 +39,9 @@ function displayEmployees(employeeData) {
         <div class="text-container">
         <h2 class="name">${name.first} ${name.last}</h2>
         <p class="email">${email}</p>
-        <p class="address">${city}</p>
+        
+        <p class="cell">${cell}</p>
+        
         </div>
         </div>
         `
@@ -52,14 +57,14 @@ function displayModal(index) {
     let date = new Date(dob.date);
 
     const modalHTML = `
-        <img class="avatar" srch="${picture.large}" />
-        <div class="text-container">
+        <img class="avatar" src="${picture.large}" />
+        <div class="overlay-container">
         <h2 class="name">${name.first} ${name.last}</h2>
         <p class="email">${email}</p>
         <p class="address">${city}</p>
         <hr />
         <p>${phone}</p>
-        <p class="address">${street}, ${state} ${postcode}</p>
+        <p class="address">${state} ${postcode}</p>
         <p>Birthday:
         ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
         </div>

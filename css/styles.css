@@ -1,6 +1,37 @@
+* {
+   box-sizing: border-box; 
+}
+
 body {
     position: relative;
 }
+/************************************/
+/************** Main ****************/
+/************************************/
+h1 {
+    /* text-align: center; */
+    font-size: 15px;
+}
+.grid-container {
+   
+    display: grid;
+    grid-template-columns: 1fr;
+  
+    
+ 
+}
+.card {
+    border: 1px solid rgba(141, 139, 139, 0.4);
+}
+.avatar {
+    border-radius: 50%;
+}
+
+
+
+
+
+
 /************************************/
 /************** Modal ***************/
 /************************************/
@@ -10,7 +41,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(100, 100, 100, 0.4)
+    background: rgba(141, 139, 139, 0.4)
 }
 .modal {
     width: 375px;
@@ -33,31 +64,61 @@ body {
  .hidden {
     display: none;
 } 
-/************************************/
-/************** Main ****************/
-/************************************/
-h1 {
-    text-transform: uppercase;
-    font-size: 15px;
-    padding-top: 12px;
-    margin-left: 15px;
-    font-weight: lighter;
-}
-.grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: #2196F3;
-    padding: 10px;
-    column-gap: 10px;
-    row-gap: 10px;
-}
 
-.card {
+
+
+/************************************/
+/************** Media Query's *******/
+/************************************/
+
+@media (min-width: 1024px){
+
+    h1 {
+        text-transform: uppercase;
+        font-size: 15px;
+        padding-top: 12px;
+        margin-left: 15px;
+        font-weight: bolder;
+    }
+    .name {
+        font-size: 13px;
+        font-weight: bold;
+    }
+    .email,
+    .address {
+        font-size: 12px;
+        font-weight: lighter;
     
-    background-color: rgba(252, 055, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 10px;
-    text-align: left;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; 
+        /* background-color: #2196F3; */
+        padding: 10px;
+        column-gap: 25px;
+        row-gap: 25px;
+    }
+    
+    .card {
+        
+        /* background-color: rgba(252, 055, 255, 0.8); */
+        border: 1px solid rgba(163, 159, 159, 0.8);
+        padding: 20px;
+        font-size: 10px;
+        text-align: left;
+        border-radius: 2%;
+        
+    }
+    
+    .avatar {
+        border-radius: 50%;
+        width: 8em;
+        height: auto;
+        
+    }
+    .text-container {
+        display: inline-block;
+        vertical-align: top;
+        padding-left: 20px;
+    }
 }
-

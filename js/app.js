@@ -5,6 +5,8 @@ const gridContainer = document.querySelector(".grid-container");
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
+const header = document.querySelector(".header");
+
 
 /// fetch data from API ///
 
@@ -13,6 +15,8 @@ fetch(urlAPI)
     .then(response => response.results)
     .then(displayEmployees)
     .catch(err => console.log(err))
+
+///create an H1 element////
 
 
 
@@ -30,6 +34,7 @@ function displayEmployees(employeeData) {
         let city = employee.location.city;
         let picture = employee.picture;
         let cell = employee.cell;
+        let state = employee.location.state;
         
         
 
@@ -39,7 +44,7 @@ function displayEmployees(employeeData) {
         <div class="text-container">
         <h2 class="name">${name.first} ${name.last}</h2>
         <p class="email">${email}</p>
-        
+        <p class="address">${city}, ${state}</p>
         <p class="cell">${cell}</p>
         
         </div>
@@ -61,8 +66,10 @@ function displayModal(index) {
         <div class="overlay-container">
         <h2 class="name">${name.first} ${name.last}</h2>
         <p class="email">${email}</p>
-        <p class="address">${city}</p>
+        <p class="address">${city}, ${state}</p>
+
         <hr />
+
         <p>${phone}</p>
         <p class="address">${state} ${postcode}</p>
         <p>Birthday:
@@ -87,8 +94,14 @@ gridContainer.addEventListener('click', e => {
     }
 });
 
-/// hidden class to the modal overlay 
+/// close overlay onclick (X button and modal-content)
+
+modalContainer.addEventListener('click', () => {
+    overlay.classList.add("hidden");
+});
 
 modalClose.addEventListener('click', () => {
     overlay.classList.add("hidden");
 });
+
+////onclick to hide the overlay 

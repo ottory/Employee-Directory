@@ -1,3 +1,8 @@
+
+
+
+
+/// fetch data from API ///
 let employees = [];
 const urlAPI =  `https://randomuser.me/api/?results=12&inc=name, picture,
 email, location, phone, dob, cell &noinfo &nat=US`
@@ -7,9 +12,7 @@ const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
 const header = document.querySelector(".header");
 
-
-/// fetch data from API ///
-
+ 
 fetch(urlAPI)
     .then(response => response.json())
     .then(response => response.results)

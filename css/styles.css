@@ -27,7 +27,7 @@ header {
 }
 h1 {
     text-transform: uppercase;
-    font-weight: medium;
+    font-weight: 800;
     font-size: medium;
 }
 
@@ -121,7 +121,6 @@ header {
 }
  main {
      display: grid;
-     margin: 0 auto;
      grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); 
  }
  .card {

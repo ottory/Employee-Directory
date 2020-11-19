@@ -1,8 +1,7 @@
+/************************************************/
+/************** Global variables ****************/
+/************************************************/
 
-
-
-
-/// fetch data from API ///
 let employees = [];
 const urlAPI =  `https://randomuser.me/api/?results=12&inc=name, picture,
 email, location, phone, dob, cell &noinfo &nat=US`
@@ -10,18 +9,24 @@ const gridContainer = document.querySelector(".grid-container");
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
-const header = document.querySelector(".header");
 
- 
+
+/***************************************************/
+/************** Fetch Data from API ****************/
+/***************************************************/
+
 fetch(urlAPI)
     .then(response => response.json())
     .then(response => response.results)
     .then(displayEmployees)
     .catch(err => console.log(err))
 
-///create an H1 element////
 
 
+
+/************************************************/
+/************** Helper Functions ****************/
+/************************************************/
 
 function displayEmployees(employeeData) {
     
@@ -38,6 +43,7 @@ function displayEmployees(employeeData) {
         let picture = employee.picture;
         let cell = employee.cell;
         let state = employee.location.state;
+     
         
         
 
@@ -56,6 +62,9 @@ function displayEmployees(employeeData) {
         });
         gridContainer.innerHTML = employeeHTML;
 }
+/************************************/
+/************** Modal****************/
+/************************************/
 
 function displayModal(index) {
 
@@ -74,7 +83,7 @@ function displayModal(index) {
         <hr />
 
         <p>${phone}</p>
-        <p class="address">${state} ${postcode}</p>
+        <p class="address">${street.name} ${street.number}, ${state} ${postcode}</p>
         <p>Birthday:
         ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
         </div>
@@ -83,6 +92,9 @@ function displayModal(index) {
     overlay.classList.remove("hidden");
     modalContainer.innerHTML = modalHTML;
 }
+/**********************************************/
+/************** Event Listeners ****************/
+/**********************************************/
 
 gridContainer.addEventListener('click', e => {
 
@@ -103,8 +115,8 @@ modalContainer.addEventListener('click', () => {
     overlay.classList.add("hidden");
 });
 
+////onclick to hide the overlay 
 modalClose.addEventListener('click', () => {
     overlay.classList.add("hidden");
 });
 
-////onclick to hide the overlay 
